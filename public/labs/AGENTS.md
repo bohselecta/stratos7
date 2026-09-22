@@ -1,0 +1,7 @@
+# Scoped instructions: Stratos7 experiments
+
+The September 22, 2026 user request authorizes publication of the supplied Adaptive Working Agreement prompt and its product concept in this experiment. This is a narrow exception to the root fixture-only seed rule, not permission to import personal history. The approved prompt lives verbatim in `agreement/prompt.txt`; its hash is tested. The concept notes are editorial summaries, and the six example conversations and research packets are fictional records in `agreement/fixtures.json`, tagged `source: "fixture"` and `provenance: "authored-demonstration"`.
+
+Preserve the root shell and North Star. Read `docs/ADAPTATION_LAB.md` and `docs/CODEX_ADAPTATION_HANDOFF.md` before changing the experiment. This lab has no account integration, persistent memory writes, model execution, paid service, or remote builder. Never seed observed metrics from demonstrations. Imported transcripts stay local to the page and must never be committed automatically.
+
+“Build Preview” names the window onto an artifact; it does not name a prerelease build. Empty is a valid state. Opening it must not launch work. Version-specific checks, explicit acceptance, scoped undo, and last-complete-artifact preservation are separate concepts. Arbitrary pasted code must never execute in the host origin. The initial preview is inert escaped content inside an empty-sandbox iframe.

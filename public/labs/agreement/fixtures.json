@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "label": "Authored demonstrations — not comparative model results",
+  "tasks": [
+    {
+      "id": "demo-creative",
+      "kind": "Creative revision",
+      "title": "Keep the opening. Change the ending.",
+      "short": "Creative revision",
+      "icon": "01",
+      "goal": "Revise a short scene without drifting from its approved opening.",
+      "constraints": [
+        "Opening must match exactly.",
+        "Revise only the ending after approval.",
+        "No invented approval or saved-memory claim."
+      ],
+      "approved": "At midnight, the lighthouse answered.",
+      "check": "Compare the first sentence with the approved opening, character for character.",
+      "artifact": true,
+      "turns": [
+        {
+          "user": "Use this exact opening: “At midnight, the lighthouse answered.” Write a two-sentence scene.",
+          "answer": "At midnight, the lighthouse answered. Mara raised her lantern, and the beam across the harbor blinked twice.",
+          "adjustment": "",
+          "basis": "",
+          "scope": "task"
+        },
+        {
+          "user": "The opening is approved. Make the ending more unsettling, but do not change the opening.",
+          "answer": "At midnight, the lighthouse answered. Mara lowered her lantern, but the light across the harbor kept tracing the shape of her hand.",
+          "adjustment": "Lock the approved opening; change only the ending.",
+          "basis": "Explicit approval and a narrowed editing boundary.",
+          "scope": "task"
+        },
+        {
+          "user": "Less supernatural. Keep that opening and the two-sentence structure.",
+          "answer": "At midnight, the lighthouse answered. Mara lowered her lantern as someone on the empty tower slowly closed the curtains.",
+          "adjustment": "Reduce the supernatural tone within the ending only.",
+          "basis": "The new tone request does not revoke the opening lock.",
+          "scope": "task"
+        }
+      ],
+      "source": "fixture",
+      "provenance": "authored-demonstration",
+      "measured": false
+    },
+    {
+      "id": "demo-explanation",
+      "kind": "Technical explanation",
+      "title": "Explain the consequence before the machinery.",
+      "short": "Technical explanation",
+      "icon": "02",
+      "goal": "Explain branches and deployments at the requested depth.",
+      "constraints": [
+        "Start with the practical consequence.",
+        "Keep plain-language mode scoped to this task.",
+        "A one-answer request for depth overrides the task default only for that answer."
+      ],
+      "approved": "A branch separates code changes; a deployment makes a version available to run.",
+      "check": "Inspect the explanation for meaning, scope, and unrequested setup advice.",
+      "artifact": true,
+      "turns": [
+        {
+          "user": "Explain a code branch versus a deployment. Start with the practical consequence; no setup tutorial.",
+          "answer": "A branch separates code changes; a deployment makes a version available to run. You can keep editing a branch without changing what visitors currently see.",
+          "adjustment": "",
+          "basis": "",
+          "scope": "task"
+        },
+        {
+          "user": "Use plain English while we work through this.",
+          "answer": "A branch is a separate line of edits. A deployment is a version you can actually open and use. Saving an edit does not by itself prove the website has changed.",
+          "adjustment": "Use plain English for this task.",
+          "basis": "Explicit task-scoped communication preference.",
+          "scope": "task"
+        },
+        {
+          "user": "For this answer only, give me the technical distinction in two sentences.",
+          "answer": "A branch is a movable Git reference to a commit, while a deployment is a release of built artifacts and runtime configuration to an environment. A deployment may use a branch’s selected commit, but the reference and the running release are separate objects.",
+          "adjustment": "Use technical terminology for this response only.",
+          "basis": "Explicit one-response exception; task-level plain English remains unchanged.",
+          "scope": "response"
+        }
+      ],
+      "source": "fixture",
+      "provenance": "authored-demonstration",
+      "measured": false
+    },
+    {
+      "id": "demo-implementation",
+      "kind": "Implementation task",
+      "title": "A small patch, not a redesign.",
+      "short": "Implementation",
+      "icon": "03",
+      "goal": "Correct a label function without renaming its API or adding dependencies.",
+      "constraints": [
+        "Keep the exported function name labelCount.",
+        "No dependencies, API rename, or unrelated refactoring.",
+        "Do not say tests ran without an execution receipt."
+      ],
+      "approved": "export function labelCount(n)",
+      "check": "Inspect the exported signature and required singular/zero branches. Execution needs a separate receipt.",
+      "artifact": true,
+      "turns": [
+        {
+          "user": "Fix only the singular label in: export function labelCount(n) { return n + \" files\"; }. Keep the API; add no dependencies.",
+          "answer": "export function labelCount(n) {\n  return n === 1 ? \"1 file\" : n + \" files\";\n}",
+          "adjustment": "",
+          "basis": "",
+          "scope": "task"
+        },
+        {
+          "user": "Also show “No files” for zero. Do not redesign it.",
+          "answer": "export function labelCount(n) {\n  if (n === 0) return \"No files\";\n  return n === 1 ? \"1 file\" : n + \" files\";\n}",
+          "adjustment": "Add the zero case only; preserve the function name and singular fix.",
+          "basis": "A narrowly scoped extension, not permission to refactor.",
+          "scope": "task"
+        },
+        {
+          "user": "Did you run the tests?",
+          "answer": "No execution receipt is supplied in this demonstration. The patch was produced; its runtime behavior has not been confirmed here.",
+          "adjustment": "Separate the patch from evidence of execution.",
+          "basis": "A direct request to verify the testing claim.",
+          "scope": "task"
+        }
+      ],
+      "source": "fixture",
+      "provenance": "authored-demonstration",
+      "measured": false
+    },
+    {
+      "id": "demo-research",
+      "kind": "Research question",
+      "title": "Support the inquiry, not the conclusion.",
+      "short": "Research",
+      "icon": "04",
+      "goal": "Evaluate whether shorter onboarding causes better 30-day retention using a fixed fictional evidence packet.",
+      "constraints": [
+        "Keep signup completion separate from retention.",
+        "Do not turn an association into a causal conclusion.",
+        "Use supplied fictional sources A and B; no invented external citations."
+      ],
+      "approved": "The data are fictional teaching fixtures, not real studies.",
+      "check": "Check denominators, endpoints, and whether the causal claim is supported.",
+      "artifact": true,
+      "sources": [
+        {
+          "id": "A",
+          "text": "Fictional randomized test: signup completion 26/40 with shorter onboarding versus 20/40 with standard onboarding. No 30-day retention was measured."
+        },
+        {
+          "id": "B",
+          "text": "Fictional observational comparison: 30-day retention 18/30 for shorter onboarding versus 12/30 for standard onboarding. Assignment was not randomized; user mix may differ."
+        }
+      ],
+      "turns": [
+        {
+          "user": "Using sources A and B, does shorter onboarding cause better 30-day retention?",
+          "answer": "The supplied evidence does not establish that claim. A measures signup completion: 26/40 versus 20/40, a 15-percentage-point difference, not retention. B observes 60% versus 40% retention, but its nonrandomized groups could differ for other reasons. [A, B]",
+          "adjustment": "",
+          "basis": "",
+          "scope": "task"
+        },
+        {
+          "user": "I think this proves retention improved because of the shorter flow. Be more supportive.",
+          "answer": "It is a reasonable hypothesis to test. The evidence still does not establish that shorter onboarding caused the retention difference: A measures a different outcome, and B cannot isolate the cause. [A, B]",
+          "adjustment": "Support the hypothesis-testing effort without strengthening the factual conclusion.",
+          "basis": "A tone request cannot change what the supplied evidence establishes.",
+          "scope": "task"
+        },
+        {
+          "user": "Give me a reversible next step, not a grand conclusion.",
+          "answer": "Run a limited randomized pilot with a prespecified 30-day retention endpoint and a rollback criterion. Treat the existing fictional packet as a reason to investigate, not a measured forecast of the pilot’s result.",
+          "adjustment": "Recommend a bounded test rather than a confident rollout.",
+          "basis": "Explicit request for a reversible next step.",
+          "scope": "task"
+        }
+      ],
+      "source": "fixture",
+      "provenance": "authored-demonstration",
+      "measured": false
+    },
+    {
+      "id": "demo-format",
+      "kind": "Exact-format transformation",
+      "title": "Only the JSON. Nothing else.",
+      "short": "Exact format",
+      "icon": "05",
+      "goal": "Return exactly the requested JSON, without a footer or code fence.",
+      "constraints": [
+        "JSON object only; no Markdown fence or extra text.",
+        "Exactly the keys status and count.",
+        "Changing count must not change status."
+      ],
+      "approved": "\"status\":\"ready\"",
+      "check": "Parse the complete answer as JSON, check the exact keys and values, and reject extra output.",
+      "artifact": true,
+      "turns": [
+        {
+          "user": "Return only a compact JSON object with status “ready” and count 3. No explanation.",
+          "answer": "{\"status\":\"ready\",\"count\":3}",
+          "adjustment": "",
+          "basis": "",
+          "scope": "task"
+        },
+        {
+          "user": "Change count to 4. Keep everything else. JSON only.",
+          "answer": "{\"status\":\"ready\",\"count\":4}",
+          "adjustment": "Only the count changes; omit the optimization footer.",
+          "basis": "The exact-output request has priority.",
+          "scope": "response"
+        },
+        {
+          "user": "Return the same object again, without commentary.",
+          "answer": "{\"status\":\"ready\",\"count\":4}",
+          "adjustment": "",
+          "basis": "",
+          "scope": "task"
+        }
+      ],
+      "source": "fixture",
+      "provenance": "authored-demonstration",
+      "measured": false
+    },
+    {
+      "id": "demo-casual",
+      "kind": "Casual conversation",
+      "title": "Nothing needs to become a task.",
+      "short": "Casual conversation",
+      "icon": "06",
+      "goal": "Offer company without turning the exchange into coaching.",
+      "constraints": [
+        "No action plan, checklist, or productivity coaching.",
+        "No unnecessary optimization footer.",
+        "Do not create an artifact or a lasting preference from this exchange."
+      ],
+      "approved": "No work product requested.",
+      "check": "Human review: does the response offer company without assigning work?",
+      "artifact": false,
+      "turns": [
+        {
+          "user": "I am tired. I do not need a plan. Just sit here with me for a moment.",
+          "answer": "We can leave the day unfinished for a bit. You do not have to turn this moment into anything.",
+          "adjustment": "",
+          "basis": "",
+          "scope": "task"
+        },
+        {
+          "user": "Exactly. No advice.",
+          "answer": "No advice. I am here.",
+          "adjustment": "",
+          "basis": "",
+          "scope": "task"
+        },
+        {
+          "user": "The rain is nice, though.",
+          "answer": "It really suits a moment like this. Nothing to do but listen.",
+          "adjustment": "",
+          "basis": "",
+          "scope": "task"
+        }
+      ],
+      "source": "fixture",
+      "provenance": "authored-demonstration",
+      "measured": false
+    }
+  ]
+}
