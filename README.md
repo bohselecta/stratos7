@@ -53,3 +53,22 @@ AGENTS.md                 Codex build instructions
 ## Recommended handoff
 
 Give Codex the repository plus `public/reference/stratos7-north-star.svg` and ask it to execute `AGENTS.md` in phases. Do not ask Codex to infer demo content from your current ChatGPT account or connected services.
+
+## Implemented work pass
+
+The local demo now includes all eight panel destinations, pinned cross-project observation, collapsed/standard/wide/full-screen layouts, persisted project state, approval evidence and change requests, a pausable simulated run, a local preview, durable receipts, task editing/reordering, and file diffs. Use **Advanced → Restart the demo** to replay the scripted flow. An approval appears after about eight seconds; the run waits for authorization before completing preview publication.
+
+All integration buttons open a scope inspector. The preview is rendered locally, and the chat composer produces an explicitly labeled demo response. No backend, account connection, or deployment is required.
+
+### Verification
+
+```bash
+npm run check
+npm run build
+npx playwright install chromium
+npm run test:e2e
+```
+
+The browser suite covers the canonical approval flow, pause/resume, requests for changes, local persistence, panel modes, file diffs, task edits, dialog focus restoration, and responsive overflow at 320, 390, 768, 1180, and 1440 pixels. It starts a local server on port 3107 if necessary.
+
+See `docs/IMAGE_ASSETS.md` for the generated backdrop and prompt. Project art can be regenerated with `python3 scripts/generate-project-art.py`.

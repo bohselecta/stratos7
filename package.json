@@ -8,7 +8,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "audit:demo-data": "node scripts/audit-demo-data.mjs",
-    "check": "npm run typecheck && npm run audit:demo-data"
+    "check": "npm run typecheck && npm run audit:demo-data",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
@@ -19,9 +20,14 @@
     "zustand": "^5.0.8"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "typescript": "^5.7.2"
+  },
+  "overrides": {
+    "postcss": "^8.5.28"
   }
 }
